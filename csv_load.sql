@@ -8,7 +8,7 @@ CREATE OR REPLACE TABLE products using template (
         location => '@my_stage',
         files => '.csv',
         file_format => 'my_format'))); 
-COPY INTO emp FROM @mycsvstage
+COPY INTO emp FROM @my_stage
     files = ('sample_products.csv')
     file_format = (format_name=my_format)
     match_by_column_name = case_sensitive;
