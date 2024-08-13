@@ -6,9 +6,9 @@ CREATE OR REPLACE TABLE products using template (
     SELECT array_agg(object_construct(*)) 
     FROM TABLE (infer_schema(
         location => '@my_stage',
-        files => 'products.csv',
+        files => 'products.csv',  --SnowSQL file: 'products.csv.gz'
         file_format => 'csv_format')));
 COPY INTO products FROM @my_stage
-    files = ('products.csv')
+    files = ('products.csv')  --SnowSQL file: 'products.csv.gz'
     file_format = (format_name=csv_format)
     match_by_column_name = case_sensitive;
