@@ -1,6 +1,6 @@
 CREATE DATABASE my_table;
 CREATE OR REPLACE my_stage;
--- PUT FILE://C:/Users/kevin.seely/sample_products.csv @mycsvstage; --only in snowsql
+-- PUT FILE://<path_to_file>/<filename> @my_stage; --only in snowsql
 CREATE OR REPLACE FILE FORMAT my_format TYPE = csv, parse_header = true;
 CREATE OR REPLACE TABLE products using template (
     SELECT array_agg(object_construct(*)) 
